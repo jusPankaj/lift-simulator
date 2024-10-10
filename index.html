@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./src/css/main.css" />
+  </head>
+  <body id="app">
+    <form action="" id="submitForm">
+      <label for="numOfFloors">Enter No of Floors : </label>
+       <!-- for should denote id of input tag -->
+      <input
+        type="number"
+        name="floors"
+        id="numOfFloors"
+        placeholder="Enter no of Floors"
+        required
+      />
+      <br />
+      <label for="numOfLifts">Enter No of Lifts : </label>
+      <input
+        type="number"
+        name="lifts"
+        id="numOfLifts"
+        placeholder="Enter no of Lifts"
+        required
+      />
+      <br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <section>
+      <div id="floorContainer">
+        <!-- <div class="floors">
+          <div class="buttons">
+            <button id="upButton">Up</button>
+            <button id="downButton">Down</button>
+          </div>
+          <div class="liftContainer">
+            <div class="lift">
+              <div class="leftDoor"></div>
+              <div class="rightDoor"></div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </section>
+
+    
+    <script src="./src/js/main.js" type="text/javascript" defer></script>
+  </body>
+</html>

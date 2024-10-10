@@ -1,0 +1,73 @@
+h1,
+h2 {
+  font-family: Lato;
+}
+
+#floorContainer {
+  width: 100vw;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 3px;
+  justify-content: start;
+  align-items: center;
+}
+
+.floors {
+  display: flex;
+  gap: 2px;
+  background-color: lightgrey;
+  width: 95vw;
+  height: 100px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.liftContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  gap: 6px;
+}
+.lift {
+  width: 50px;
+  height: 80px;
+  background-color: silver;
+  position: relative;
+  transition: transform 2s ease;
+}
+
+.leftDoor, .rightDoor{
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: gray;
+  transition: width 2s ease;
+}
+
+.leftDoor{
+  left: 0;
+}
+.rightDoor{
+  right: 0;
+}
+
+.lift.open .leftDoor {
+  width: 0;
+}
+
+.lift.open .rightDoor {
+  width: 0;
+}
