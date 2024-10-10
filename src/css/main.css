@@ -46,7 +46,7 @@ button {
   height: 80px;
   background-color: silver;
   position: relative;
-  transition: transform 2s ease;
+  transition: transform 2.5s ease;
 }
 
 .leftDoor, .rightDoor{
@@ -54,7 +54,7 @@ button {
   width: 50%;
   height: 100%;
   background-color: gray;
-  transition: width 2s ease;
+  transition: width 2.5s ease;
 }
 
 .leftDoor{
