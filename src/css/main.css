@@ -46,28 +46,42 @@ button {
   height: 80px;
   background-color: silver;
   position: relative;
-  transition: transform 2.5s ease;
+  overflow: hidden;
 }
 
-.leftDoor, .rightDoor{
+
+.leftDoor{
   position: absolute;
   width: 50%;
   height: 100%;
-  background-color: gray;
-  transition: width 2.5s ease;
-}
-
-.leftDoor{
   left: 0;
+  background-color: blue;
+  animation: leftDoor 2.5s ;
 }
 .rightDoor{
+  position: absolute;
+  width: 50%;
+  height: 100%;
   right: 0;
+  background-color: red;
+  animation: rightDoor 2.5s;
 }
 
-.lift.open .leftDoor {
-  width: 0;
+/* .lift.open .leftDoor {
+
 }
 
 .lift.open .rightDoor {
-  width: 0;
+  
+}  */
+
+
+@keyframes leftDoor {
+  from{left: 0;}
+  to{left:-50%}
+}
+
+@keyframes rightDoor {
+  from{right: 0}
+  to{right: -50%}
 }
