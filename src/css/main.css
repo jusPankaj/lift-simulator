@@ -44,7 +44,7 @@ button {
 .lift {
   width: 50px;
   height: 80px;
-  background-color: silver;
+  background-color: burlywood;
   position: relative;
   overflow: hidden;
 }
@@ -52,36 +52,55 @@ button {
 
 .leftDoor{
   position: absolute;
+  border-right: 2px solid black;
   width: 50%;
   height: 100%;
   left: 0;
   background-color: blue;
-  animation: leftDoor 2.5s ;
 }
+
 .rightDoor{
   position: absolute;
+  border-left: 2px solid black;
   width: 50%;
   height: 100%;
   right: 0;
-  background-color: red;
-  animation: rightDoor 2.5s;
-}
-
-/* .lift.open .leftDoor {
-
-}
-
-.lift.open .rightDoor {
+  background-color: blue;
   
-}  */
+}
 
+ .openLeft{
+  animation: openLeftDoor 2.5s ;
+}
 
-@keyframes leftDoor {
+.openRight{
+  animation: openRightDoor 2.5s ;
+}
+
+ .closeLeft{
+  animation: closeLeftDoor 2.5s;
+}
+
+.closeRight{
+  animation: closeRightDoor 2.5s;
+}
+
+@keyframes openLeftDoor {
   from{left: 0;}
   to{left:-50%}
 }
 
-@keyframes rightDoor {
+@keyframes openRightDoor {
   from{right: 0}
   to{right: -50%}
+}
+
+@keyframes closeLeftDoor {
+  from{left: -50%}
+  to{left: 0}
+}
+
+@keyframes closeRightDoor {
+  from{right:-50%}
+  to{right:0}
 }
