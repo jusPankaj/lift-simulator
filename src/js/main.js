@@ -44,8 +44,12 @@ function generateFloors(floorCount, liftCount){
         downButton.textContent = 'Down';
         downButton.addEventListener('click', ()=> requestLift(i));
 
-        buttons.appendChild(upButton);
-        buttons.appendChild(downButton);
+        if(floorCount-1!=i){
+            buttons.appendChild(upButton);
+        }
+        if(i!=0){
+            buttons.appendChild(downButton);
+        }
 
         const liftContainer = document.createElement('div');
         liftContainer.className = 'liftContainer';
