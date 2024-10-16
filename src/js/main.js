@@ -14,6 +14,11 @@ document.querySelector('form').addEventListener("submit", (e)=>{
 
     console.log('you submitted with floors ' + floors + " and lifts: "+ lifts) ;
     generateFloors(floors, lifts);
+
+    document.getElementById('numOfFloors').value = '';
+    document.getElementById('numOfLifts').value = '';
+
+    document.getElementById('numOfFloors').focus();
 })
 
 
@@ -140,14 +145,15 @@ const moveLift = (liftIndex, targetFloor) =>{
 
     const currentFloor = liftPositions[liftIndex];
     const floorsToMove  = Math.abs(currentFloor - targetFloor);
-    const travelTime = floorsToMove * 2;
+    const secondsPerFloor = 2;
+    const travelTime = floorsToMove * secondsPerFloor;
 
     var liftLeft = liftElement.querySelector('.leftDoor');
     var liftRight = liftElement.querySelector('.rightDoor');
 
 
     const moveLiftToFloor = () => {
-            liftElement.style.transition = `transform ${travelTime}s ease`;
+            liftElement.style.transition = `transform ${travelTime}s linear`;
             liftElement.style.transform = `translateY(${moveY}px)`;
 
             setTimeout(() => {
