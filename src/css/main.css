@@ -95,12 +95,12 @@ button {
   to{right: -50%}
 }
 
-@keyframes closeLeftDoor {
+@keyframes closeRightDoor {
   from{left: -50%}
   to{left: 0}
 }
 
-@keyframes closeRightDoor {
+@keyframes closeLeftDoor {
   from{right:-50%}
   to{right:0}
 }
