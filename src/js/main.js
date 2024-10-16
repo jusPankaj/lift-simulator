@@ -4,6 +4,8 @@ const inTransit = [];
 let liftPositions = [];
 let floorRequests = [];
 let liftStates = [];
+let floorsBeingServed = [];
+
 
 document.querySelector('form').addEventListener("submit", (e)=>{
     e.preventDefault();
@@ -80,8 +82,8 @@ function generateFloors(floorCount, liftCount){
 }
 
 
-const requestLift = ( requestedFloor )=> {
-    if(!floorRequests.includes(requestedFloor)){
+const requestLift = (requestedFloor) => {
+    if (!floorRequests.includes(requestedFloor) && !floorsBeingServed.includes(requestedFloor)) {
         floorRequests.push(requestedFloor);
         processLiftRequests();
     }
@@ -89,14 +91,15 @@ const requestLift = ( requestedFloor )=> {
 
 
 const processLiftRequests = () => {
-    while(floorRequests.length > 0){
+    while (floorRequests.length > 0) {
         const requestedFloor = floorRequests[0];
         const availableLift = findAvailableLift(requestedFloor);
 
-        if(availableLift != null){
+        if (availableLift !== null) {
             floorRequests.shift();
+            floorsBeingServed.push(requestedFloor); 
             moveLift(availableLift, requestedFloor);
-        }else{
+        } else {
             break;
         }
     }
@@ -104,22 +107,20 @@ const processLiftRequests = () => {
 
 
 const findAvailableLift = (requestedFloor) => {
-
     let nearestLift = null;
     let minDistance = Infinity;
 
-    for(let i=0; i<liftPositions.length; i++){
-        if(inTransit.includes(i)){
+    for (let i = 0; i < liftPositions.length; i++) {
+        if (inTransit.includes(i)) {
             continue;
         }
 
         const distance = Math.abs(liftPositions[i] - requestedFloor);
 
-
-        if(distance < minDistance){
+        if (distance < minDistance) {
             minDistance = distance;
             nearestLift = i;
-        } 
+        }
     }
 
     return nearestLift;
@@ -165,6 +166,7 @@ const moveLift = (liftIndex, targetFloor) =>{
 };  
 
 
+
 const openDoorsAndProcess = (liftIndex, liftLeft, liftRight) => {
     openDoors(liftLeft, liftRight, () => {
         liftStates[liftIndex] = 'open';
@@ -173,12 +175,13 @@ const openDoorsAndProcess = (liftIndex, liftLeft, liftRight) => {
             closeDoors(liftLeft, liftRight, () => {
                 liftStates[liftIndex] = 'closed';
                 inTransit.splice(inTransit.indexOf(liftIndex), 1);
+
+                floorsBeingServed.splice(floorsBeingServed.indexOf(liftPositions[liftIndex]), 1);
                 processLiftRequests();
             });
         }, 2500);
     });
 };
-
 
 const closeDoors = (liftLeft, liftRight, callback) => {
     liftRight.style.transition = 'transform 2s ease';
