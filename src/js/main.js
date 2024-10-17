@@ -168,8 +168,8 @@ function processLiftRequests() {
 function moveLift(liftIndex, targetFloor, direction) {
     inTransit.push(liftIndex);
 
-    const floorHeight = 100;
-    const gapBetweenFloor = 2;
+    const floorHeight = 80;
+    const gapBetweenFloor = 3;
     const liftElement = document.getElementById(`lift_${liftIndex}`);
 
     const moveY = -(targetFloor * (floorHeight + gapBetweenFloor));
