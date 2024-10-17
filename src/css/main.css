@@ -3,10 +3,18 @@ h2 {
   font-family: Lato;
 }
 
+form{
+  display: flex;
+  flex-direction: column;
+  /* width: 50%; */
+  justify-content: center;
+  align-items: center;
+}
+
 #floorContainer {
   width: 100vw;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   gap: 3px;
   justify-content: start;
   align-items: center;
