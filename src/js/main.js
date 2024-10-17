@@ -15,6 +15,11 @@ document.querySelector('form').addEventListener("submit", (e)=>{
     let floors = parseInt(document.getElementById('numOfFloors').value);
     let lifts = parseInt(document.getElementById('numOfLifts').value);
 
+    if (isNaN(floors) || isNaN(lifts) || floors <= 0 || lifts <= 0) {
+        alert("Please enter positive numbers for both floors and lifts.");
+        return;
+    }
+
     console.log('you submitted with floors ' + floors + " and lifts: "+ lifts);
     generateFloors(floors, lifts);
 
