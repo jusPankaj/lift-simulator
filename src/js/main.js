@@ -77,6 +77,8 @@ function generateFloors(floorCount, liftCount){
 
         if(i < floorCount-1){
             buttons.appendChild(upButton);
+        }else if (floorCount === 1) {  
+            buttons.appendChild(upButton);
         }
         if(i > 0){
             buttons.appendChild(downButton);
